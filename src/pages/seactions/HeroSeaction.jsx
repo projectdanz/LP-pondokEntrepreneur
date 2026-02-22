@@ -96,7 +96,7 @@ export default function HeroSeaction() {
         {/* Animated Path Container */}
         <div className="absolute top-56 bottom-0 left-1/2 -translate-x-1/2 w-full max-w-4xl">
           {/* Mobile Path (Vertical) */}
-          <div className="md:hidden absolute left-1/2 -translate-x-1/2 h-full w-[2px] bg-gray-100">
+          <div className="md:hidden absolute left-1/2 -translate-x-1/2 h-full w-0.5 bg-gray-100">
             <motion.div
               className="w-full bg-[#ffca11] origin-top"
               style={{ height: "100%", scaleY: smoothProgress }}
@@ -219,6 +219,46 @@ export default function HeroSeaction() {
               <Card variant="path-item">Bahkan sudah mulai menghasilkan</Card>
             </motion.div>
           </div>
+        </div>
+
+        {/* New Summary Content */}
+        <div className="mt-32 md:mt-48 text-center relative z-20">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="inline-flex flex-wrap justify-center gap-4 md:gap-8 mb-16"
+          >
+            {[
+              "Tanpa bingung mulai",
+              "Tanpa teori kosong",
+              "Tanpa jalan sendirian",
+            ].map((text, i) => (
+              <div
+                key={i}
+                className="flex items-center gap-2 px-6 py-3 bg-[#0b3883] text-white rounded-2xl font-bold shadow-lg transform -rotate-1 even:rotate-1"
+              >
+                <div className="w-2 h-2 bg-[#ffca11] rounded-full animate-pulse" />
+                {text}
+              </div>
+            ))}
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="max-w-3xl mx-auto"
+          >
+            <h3 className="text-2xl md:text-4xl font-black text-[#0b3883] leading-tight">
+              Tempat kamu ditempa bukan hanya untuk paham bisnis,
+              <br />
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#0b3883] to-[#0e489b] italic">
+                tapi untuk jadi pelaku bisnis.
+              </span>
+            </h3>
+          </motion.div>
         </div>
       </div>
     </section>
