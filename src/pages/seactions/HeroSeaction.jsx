@@ -25,8 +25,8 @@ export default function HeroSeaction() {
   const cardOpacity3 = useTransform(smoothProgress, [0.5, 0.65], [0, 1]);
   const cardTranslate3 = useTransform(smoothProgress, [0.5, 0.65], [-30, 0]);
 
-  const cardOpacity4 = useTransform(smoothProgress, [0.75, 0.9], [0, 1]);
-  const cardTranslate4 = useTransform(smoothProgress, [0.75, 0.9], [30, 0]);
+  const cardOpacity4 = useTransform(smoothProgress, [0.65, 0.8], [0, 1]);
+  const cardTranslate4 = useTransform(smoothProgress, [0.65, 0.8], [30, 0]);
 
   // Floating decoration animations
   const floatingY = useTransform(smoothProgress, [0, 1], [0, -100]);
@@ -222,7 +222,7 @@ export default function HeroSeaction() {
         </div>
 
         {/* New Summary Content */}
-        <div className="mt-32 md:mt-48 text-center relative z-20">
+        <div className="mt-32 md:mt-48 pb-32 md:pb-64 text-center relative z-20">
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
