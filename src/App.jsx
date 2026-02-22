@@ -3,6 +3,7 @@ import HeaderSeaction from "./pages/seactions/HeaderSeaction";
 import HeroSeaction from "./pages/seactions/HeroSeaction";
 import ProblemSeaction from "./pages/seactions/ProblemSeaction";
 import SoluctionSeaction from "./pages/seactions/SoluctionSeaction";
+import YourGetSection from "./pages/seactions/YourGetSection";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <HeroSeaction />
       <ProblemSeaction />
       <SoluctionSeaction />
+      <YourGetSection />
     </div>
   );
 }
