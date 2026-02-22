@@ -1,18 +1,12 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
-
-import Navbar from "./components/Navbar";
+import HeaderSeaction from "./pages/seactions/HeaderSeaction";
 import HeroSeaction from "./pages/seactions/HeroSeaction";
 
 function App() {
   return (
     <>
-      <BrowserRouter>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<HeroSeaction />} />
-        </Routes>
-      </BrowserRouter>
+      <HeaderSeaction />
+      <HeroSeaction />
     </>
   );
 }
