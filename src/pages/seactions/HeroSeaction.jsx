@@ -1,72 +1,226 @@
-import { motion } from "framer-motion";
-import Button from "../../components/Button";
+import { useRef } from "react";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import Card from "../../components/Card";
 
 export default function HeroSeaction() {
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start center", "end center"],
+  });
+
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  });
+
+  // Calculate card appearances based on progress
+  const cardOpacity1 = useTransform(smoothProgress, [0, 0.15], [0, 1]);
+  const cardTranslate1 = useTransform(smoothProgress, [0, 0.15], [-30, 0]);
+
+  const cardOpacity2 = useTransform(smoothProgress, [0.25, 0.4], [0, 1]);
+  const cardTranslate2 = useTransform(smoothProgress, [0.25, 0.4], [30, 0]);
+
+  const cardOpacity3 = useTransform(smoothProgress, [0.5, 0.65], [0, 1]);
+  const cardTranslate3 = useTransform(smoothProgress, [0.5, 0.65], [-30, 0]);
+
+  const cardOpacity4 = useTransform(smoothProgress, [0.75, 0.9], [0, 1]);
+  const cardTranslate4 = useTransform(smoothProgress, [0.75, 0.9], [30, 0]);
+
+  // Floating decoration animations
+  const floatingY = useTransform(smoothProgress, [0, 1], [0, -100]);
+  const rotateSlower = useTransform(smoothProgress, [0, 1], [0, 45]);
+  const rotateFaster = useTransform(smoothProgress, [0, 1], [0, -90]);
+
   return (
-    <section className="relative w-full min-h-screen flex flex-col bg-white overflow-hidden ">
-      {/* Background Decorative Elements (Subtle) */}
-      <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
-        <div className="absolute top-[-10%] right-[-5%] w-100 h-100 bg-[#0b3883]/5 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-[-10%] left-[-5%] w-75 h-75 bg-[#ffca11]/5 rounded-full blur-3xl" />
+    <section
+      ref={containerRef}
+      className="relative w-full py-20 md:py-32 px-4 bg-white overflow-hidden min-h-[140vh] md:min-h-[160vh]"
+    >
+      {/* Decorative Background Elements */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {/* Large subtle blobs */}
+        <div className="absolute top-[20%] -left-[10%] w-96 h-96 bg-[#0b3883]/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-[20%] -right-[10%] w-96 h-96 bg-[#ffca11]/5 rounded-full blur-3xl" />
+
+        {/* Floating Icons/Shapes for Desktop */}
+        <motion.div
+          style={{ y: floatingY, rotate: rotateSlower }}
+          className="absolute top-[25%] left-[15%] hidden md:block opacity-20"
+        >
+          <svg
+            width="60"
+            height="60"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#0b3883"
+            strokeWidth="1.5"
+          >
+            <path d="M12 2v20M2 12h20M7 7l10 10M7 17L17 7" />
+          </svg>
+        </motion.div>
+
+        <motion.div
+          style={{
+            y: useTransform(smoothProgress, [0, 1], [0, -150]),
+            rotate: rotateFaster,
+          }}
+          className="absolute top-[60%] right-[12%] hidden md:block opacity-10"
+        >
+          <div className="w-16 h-16 border-4 border-[#ffca11] rounded-2xl" />
+        </motion.div>
+
+        <motion.div
+          style={{ y: useTransform(smoothProgress, [0, 1], [0, 50]) }}
+          className="absolute bottom-[10%] left-[20%] hidden md:block opacity-15"
+        >
+          <div className="w-8 h-8 bg-[#0e489b] rounded-full" />
+        </motion.div>
       </div>
 
-      <div className="container mx-auto max-w-5xl flex flex-col items-center text-center z-10">
-        {/* Top Badge/Bar as seen in the image */}
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-[#0b3883]/5 border border-[#0b3883]/10 mb-10 group cursor-default"
-        >
-          <div className="w-6 h-6 rounded-full bg-[#ffca11] flex items-center justify-center">
-            <div className="w-2 h-2 rounded-full bg-white group-hover:scale-150 transition-transform duration-300" />
+      <div className="container mx-auto max-w-5xl relative z-10">
+        {/* Section Title */}
+        <div className="text-center mb-24 md:mb-32">
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-3xl md:text-5xl font-extrabold text-[#0b3883] leading-tight px-4"
+          >
+            Bayangkan dalam 3–6 bulan ke depan:
+          </motion.h2>
+          <div className="w-24 h-1.5 bg-[#ffca11] mx-auto mt-6 rounded-full" />
+        </div>
+
+        {/* Animated Path Container */}
+        <div className="absolute top-56 bottom-0 left-1/2 -translate-x-1/2 w-full max-w-4xl">
+          {/* Mobile Path (Vertical) */}
+          <div className="md:hidden absolute left-1/2 -translate-x-1/2 h-full w-[2px] bg-gray-100">
+            <motion.div
+              className="w-full bg-[#ffca11] origin-top"
+              style={{ height: "100%", scaleY: smoothProgress }}
+            />
+            <motion.div
+              className="absolute left-1/2 -translate-x-1/2 w-3 h-3 bg-[#ffca11] rounded-full shadow-[0_0_10px_#ffca11]"
+              style={{
+                top: useTransform(smoothProgress, [0, 1], ["0%", "100%"]),
+              }}
+            />
           </div>
-          <span className="text-[#0b3883] text-sm font-medium tracking-wide">
-            Pondok Entrepreneur - Batch 2026
-          </span>
-        </motion.div>
 
-        {/* Main Heading */}
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-[#0b3883] leading-[1.1] mb-8"
-        >
-          “Belajar Bisnis Itu Mudah. <br />
-          <span className="text-transparent bg-clip-text bg-linear-to-r from-[#0b3883] to-[#0e489b]">
-            Yang Sulit Itu Lingkungannya.
-          </span>
-          ”
-        </motion.h1>
+          {/* Desktop Path (Zig-zag SVG) */}
+          <div className="hidden md:block w-full h-full relative">
+            <svg
+              viewBox="0 0 800 1000"
+              fill="none"
+              preserveAspectRatio="none"
+              className="w-full h-full opacity-10"
+            >
+              <path
+                d="M 200,0 C 200,125 600,125 600,250 C 600,375 200,375 200,500 C 200,625 600,625 600,750 C 600,875 400,875 400,1000"
+                stroke="#0b3883"
+                strokeWidth="4"
+                strokeDasharray="8 8"
+              />
+            </svg>
+            <svg
+              viewBox="0 0 800 1000"
+              fill="none"
+              preserveAspectRatio="none"
+              className="absolute inset-0 w-full h-full z-10"
+            >
+              <motion.path
+                d="M 200,0 C 200,125 600,125 600,250 C 600,375 200,375 200,500 C 200,625 600,625 600,750 C 600,875 400,875 400,1000"
+                stroke="#ffca11"
+                strokeWidth="5"
+                style={{ pathLength: smoothProgress }}
+                strokeLinecap="round"
+              />
+            </svg>
+            <motion.div
+              style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: 14,
+                height: 14,
+                borderRadius: "100%",
+                backgroundColor: "#ffca11",
+                boxShadow: "0 0 15px #ffca11",
+                zIndex: 30,
+                x: useTransform(
+                  smoothProgress,
+                  [0, 0.25, 0.5, 0.75, 1],
+                  ["25%", "75%", "25%", "75%", "50%"],
+                ),
+                y: useTransform(smoothProgress, [0, 1], ["0%", "100%"]),
+                translateX: "-50%",
+                translateY: "-50%",
+              }}
+            />
+          </div>
+        </div>
 
-        {/* Description */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-lg md:text-xl text-[#0e489b] max-w-2xl mb-6 leading-relaxed"
-        >
-          Bangun ekosistem bisnis yang suportif. Kita tidak hanya belajar teori,
-          tapi langsung praktek dengan bimbingan praktisi berpengalaman.
-        </motion.p>
+        {/* Cards Content */}
+        <div className="relative z-20 space-y-32 md:space-y-40 lg:space-y-48">
+          {/* Card 1 - Left */}
+          <div className="flex justify-center md:justify-start md:ml-[5%] lg:ml-[10%]">
+            <motion.div
+              style={{
+                opacity: cardOpacity1,
+                x: cardTranslate1,
+                scale: useTransform(smoothProgress, [0, 0.15], [0.9, 1]),
+              }}
+            >
+              <Card variant="path-item">Kamu punya skill bisnis nyata</Card>
+            </motion.div>
+          </div>
 
-        {/* Action Button */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <Button variant="secondary" size="lg" className="shadow-xl">
-            Daftar Sekarang
-          </Button>
-        </motion.div>
+          {/* Card 2 - Right */}
+          <div className="flex justify-center md:justify-end md:mr-[5%] lg:mr-[10%]">
+            <motion.div
+              style={{
+                opacity: cardOpacity2,
+                x: cardTranslate2,
+                scale: useTransform(smoothProgress, [0.25, 0.4], [0.9, 1]),
+              }}
+            >
+              <Card variant="path-item">
+                Punya mentor yang membimbing langsung
+              </Card>
+            </motion.div>
+          </div>
+
+          {/* Card 3 - Left */}
+          <div className="flex justify-center md:justify-start md:ml-[5%] lg:ml-[10%]">
+            <motion.div
+              style={{
+                opacity: cardOpacity3,
+                x: cardTranslate3,
+                scale: useTransform(smoothProgress, [0.5, 0.65], [0.9, 1]),
+              }}
+            >
+              <Card variant="path-item">
+                Punya jaringan sesama calon pengusaha
+              </Card>
+            </motion.div>
+          </div>
+
+          {/* Card 4 - Right */}
+          <div className="flex justify-center md:justify-end md:mr-[5%] lg:mr-[10%]">
+            <motion.div
+              style={{
+                opacity: cardOpacity4,
+                x: cardTranslate4,
+                scale: useTransform(smoothProgress, [0.75, 0.9], [0.9, 1]),
+              }}
+            >
+              <Card variant="path-item">Bahkan sudah mulai menghasilkan</Card>
+            </motion.div>
+          </div>
+        </div>
       </div>
-
-      {/* Bottom Glow */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1/2 h-1 bg-linear-to-r from-transparent via-[#ffca11]/20 to-transparent blur-lg" />
     </section>
   );
 }

@@ -50,6 +50,7 @@ export default function Card({
         className={`
                     card-base
                     ${isSimple ? "card-simple" : "card-modern-shadow"}
+                    ${variant === "path-item" ? "card-path-item" : ""}
                     ${isSimple && boxOffset === "left" ? "offset-left" : ""}
                     ${isSideLayout ? "card-side-layout" : ""}
                     ${isBottomCenter ? "card-bottom-center-layout" : ""}
