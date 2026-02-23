@@ -61,14 +61,19 @@ export default function Card({
         {isExpandable && alignButton === "side-left" && renderButton()}
 
         <div className="card-content-wrapper">
-          {/* Always show Title if present */}
-          {title && (
-            <h3
-              className={`card-title ${isSimple ? "text-center" : "text-left"}`}
-            >
-              {title}
-            </h3>
-          )}
+          {/* Header Area - Clickable if expandable */}
+          <div
+            className={`card-header ${isExpandable ? "cursor-pointer select-none" : ""}`}
+            onClick={isExpandable ? () => setOpen(!open) : undefined}
+          >
+            {title && (
+              <h3
+                className={`card-title ${isSimple ? "text-center" : "text-left"}`}
+              >
+                {title}
+              </h3>
+            )}
+          </div>
 
           {/* Content Area */}
           {!isExpandable ? (

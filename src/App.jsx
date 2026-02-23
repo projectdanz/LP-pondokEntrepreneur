@@ -4,7 +4,9 @@ import HeroSeaction from "./pages/seactions/HeroSeaction";
 import ProblemSeaction from "./pages/seactions/ProblemSeaction";
 import SoluctionSeaction from "./pages/seactions/SoluctionSeaction"; // Added import for SoluctionSeaction
 import YourGetSection from "./pages/seactions/YourGetSection";
+import FAQSeaction from "./pages/seactions/FAQSeaction";
 import CTASeaction from "./pages/seactions/CTASeaction";
+import Footer from "./pages/Footer";
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
       <SoluctionSeaction />
       <YourGetSection />
       <CTASeaction />
+      <FAQSeaction />
+      <Footer />
     </div>
   );
 }
