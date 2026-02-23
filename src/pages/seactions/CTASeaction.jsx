@@ -14,7 +14,7 @@ export default function CTASeaction() {
     },
     {
       name: "Koh Fadhlih",
-      role: "Lead Mentor",
+      role: "CEO",
       image: "/image_management/Koh_Fadhlih.svg",
       glowColor: "bg-[#ffca11]",
     },
@@ -28,7 +28,10 @@ export default function CTASeaction() {
   }, []);
 
   return (
-    <section className="relative w-full py-24 px-4 bg-[#0b3883] overflow-hidden">
+    <section
+      id="daftar"
+      className="relative w-full py-24 px-4 bg-[#0b3883] overflow-hidden rounded-4xl"
+    >
       {/* Decorative Background Elements */}
       <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
         <div className="absolute top-[-10%] left-[-5%] w-96 h-96 bg-white rounded-full blur-[120px]" />
@@ -66,7 +69,7 @@ export default function CTASeaction() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3 }}
-                    className="absolute bottom-12 px-6 py-3 bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl text-center shadow-2xl"
+                    className="absolute bottom-12 md:bottom-24 px-6 py-3 bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl text-center shadow-2xl"
                   >
                     <p className="text-white font-black text-xl tracking-tight">
                       {mentors[currentMentor].name}
@@ -123,7 +126,7 @@ export default function CTASeaction() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="text-white/70 text-lg md:text-xl leading-relaxed mb-8 max-w-2xl"
+              className="text-white/70 text-sm md:text-lg leading-relaxed mb-8 max-w-2xl"
             >
               Kesempatan tidak datang dua kali. Keputusanmu hari ini akan
               menentukan langkah bisnismu dalam 3–5 tahun ke depan. Secure your
@@ -137,21 +140,32 @@ export default function CTASeaction() {
               transition={{ delay: 0.2 }}
               className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
             >
-              <Button size="lg" className="group">
-                DAFTAR SEKARANG
+              <Button
+                size="lg"
+                className="group relative overflow-hidden border-2 bg-amber-400 hover:bg-amber-500"
+              >
+                <span className="relative z-10 flex items-center gap-2 text-sm">
+                  DAFTAR SEKARANG
+                </span>
                 <ArrowRight
                   size={18}
-                  className="ml-2 group-hover:translate-x-1 transition-transform"
+                  className="absolute z-10 transition-all duration-500 ease-out opacity-0 -left-4 group-hover:opacity-100 group-hover:right-4 group-hover:left-auto text-white"
                 />
               </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                className="text-white! border-white/30! hover:bg-white/10!"
+              <a
+                href="https://wa.me/6281529002900?text=hallo%20cs"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <MessageCircle size={18} className="mr-2" />
-                CHAT ADMIN
-              </Button>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="text-white! border-white/30! bg-green-600! hover:bg-green-700!"
+                >
+                  <MessageCircle size={18} className="mr-2" />
+                  <span className="text-sm">CHAT ADMIN</span>
+                </Button>
+              </a>
             </motion.div>
 
             <motion.div

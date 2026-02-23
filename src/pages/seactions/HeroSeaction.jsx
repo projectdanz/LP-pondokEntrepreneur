@@ -16,17 +16,17 @@ export default function HeroSeaction() {
   });
 
   // Calculate card appearances based on progress
-  const cardOpacity1 = useTransform(smoothProgress, [0, 0.15], [0, 1]);
-  const cardTranslate1 = useTransform(smoothProgress, [0, 0.15], [-30, 0]);
+  const cardOpacity1 = useTransform(smoothProgress, [0, 0.12], [0, 1]);
+  const cardTranslate1 = useTransform(smoothProgress, [0, 0.12], [-30, 0]);
 
-  const cardOpacity2 = useTransform(smoothProgress, [0.25, 0.4], [0, 1]);
-  const cardTranslate2 = useTransform(smoothProgress, [0.25, 0.4], [30, 0]);
+  const cardOpacity2 = useTransform(smoothProgress, [0.22, 0.34], [0, 1]);
+  const cardTranslate2 = useTransform(smoothProgress, [0.22, 0.34], [30, 0]);
 
-  const cardOpacity3 = useTransform(smoothProgress, [0.5, 0.65], [0, 1]);
-  const cardTranslate3 = useTransform(smoothProgress, [0.5, 0.65], [-30, 0]);
+  const cardOpacity3 = useTransform(smoothProgress, [0.38, 0.5], [0, 1]);
+  const cardTranslate3 = useTransform(smoothProgress, [0.38, 0.5], [-30, 0]);
 
-  const cardOpacity4 = useTransform(smoothProgress, [0.65, 0.8], [0, 1]);
-  const cardTranslate4 = useTransform(smoothProgress, [0.65, 0.8], [30, 0]);
+  const cardOpacity4 = useTransform(smoothProgress, [0.58, 0.72], [0, 1]);
+  const cardTranslate4 = useTransform(smoothProgress, [0.58, 0.72], [30, 0]);
 
   // Floating decoration animations
   const floatingY = useTransform(smoothProgress, [0, 1], [0, -100]);
@@ -35,8 +35,9 @@ export default function HeroSeaction() {
 
   return (
     <section
+      id="beranda"
       ref={containerRef}
-      className="relative w-full py-20 md:py-32 px-4 bg-white overflow-hidden min-h-[140vh] md:min-h-[160vh]"
+      className="relative w-full py-20 md:py-32 px-4 bg-white overflow-hidden min-h-[160vh] md:min-h-[200vh]"
     >
       {/* Decorative Background Elements */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -88,7 +89,8 @@ export default function HeroSeaction() {
             viewport={{ once: true }}
             className="text-3xl md:text-5xl font-extrabold text-[#0b3883] leading-tight px-4"
           >
-            Bayangkan dalam 3–6 bulan ke depan:
+            Bayangkan dalam <span className="text-amber-400">3–6</span> bulan ke
+            depan:
           </motion.h2>
           <div className="w-24 h-1.5 bg-[#ffca11] mx-auto mt-6 rounded-full" />
         </div>
@@ -170,7 +172,7 @@ export default function HeroSeaction() {
               style={{
                 opacity: cardOpacity1,
                 x: cardTranslate1,
-                scale: useTransform(smoothProgress, [0, 0.15], [0.9, 1]),
+                scale: useTransform(smoothProgress, [0, 0.12], [0.9, 1]),
               }}
             >
               <Card variant="path-item">Kamu punya skill bisnis nyata</Card>
@@ -183,7 +185,7 @@ export default function HeroSeaction() {
               style={{
                 opacity: cardOpacity2,
                 x: cardTranslate2,
-                scale: useTransform(smoothProgress, [0.25, 0.4], [0.9, 1]),
+                scale: useTransform(smoothProgress, [0.22, 0.34], [0.9, 1]),
               }}
             >
               <Card variant="path-item">
@@ -198,7 +200,7 @@ export default function HeroSeaction() {
               style={{
                 opacity: cardOpacity3,
                 x: cardTranslate3,
-                scale: useTransform(smoothProgress, [0.5, 0.65], [0.9, 1]),
+                scale: useTransform(smoothProgress, [0.38, 0.5], [0.9, 1]),
               }}
             >
               <Card variant="path-item">
@@ -213,7 +215,7 @@ export default function HeroSeaction() {
               style={{
                 opacity: cardOpacity4,
                 x: cardTranslate4,
-                scale: useTransform(smoothProgress, [0.75, 0.9], [0.9, 1]),
+                scale: useTransform(smoothProgress, [0.58, 0.72], [0.9, 1]),
               }}
             >
               <Card variant="path-item">Bahkan sudah mulai menghasilkan</Card>

@@ -33,7 +33,7 @@ export default function HeaderSeaction() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-[#0b3883] leading-[1.1] mb-8"
         >
-          “Belajar Bisnis Itu Mudah. <br />
+          “Belajar Bisnis Itu <span className="text-amber-400">Mudah.</span><br />
           <span className="text-transparent bg-clip-text bg-linear-to-r from-[#0b3883] to-[#0e489b]">
             Yang Sulit Itu Lingkungannya.
           </span>

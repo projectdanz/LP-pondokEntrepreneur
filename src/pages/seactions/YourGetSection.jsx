@@ -60,59 +60,29 @@ export default function YourGetSection() {
           />
         </div>
 
-        {/* Staggered Grid Layout */}
+        {/* Uniform Grid Layout */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="flex flex-col items-center gap-6"
+          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6"
         >
-          {/* First Row: 4 Items on Desktop */}
-          <div className="flex flex-wrap justify-center gap-6 w-full">
-            {benefits.slice(0, 4).map((benefit, idx) => (
-              <motion.div
-                key={idx}
-                variants={itemVariants}
-                className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] max-w-70"
+          {benefits.map((benefit, idx) => (
+            <motion.div key={idx} variants={itemVariants} className="flex">
+              <Card
+                variant="path-item"
+                className="w-full h-full flex flex-col items-center justify-center py-8 px-4"
               >
-                <Card
-                  variant="path-item"
-                  className="w-full text-center h-full flex flex-col items-center justify-center py-8"
-                >
-                  <div className="mb-4 p-4 bg-[#0b3883]/5 rounded-2xl text-[#0b3883]">
-                    <benefit.icon size={32} strokeWidth={2.5} />
-                  </div>
-                  <span className="font-bold text-[#0b3883] leading-tight px-4">
-                    {benefit.text}
-                  </span>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Second Row: 3 Items on Desktop (Staggered) */}
-          <div className="flex flex-wrap justify-center gap-6 w-full">
-            {benefits.slice(4).map((benefit, idx) => (
-              <motion.div
-                key={idx}
-                variants={itemVariants}
-                className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] max-w-70"
-              >
-                <Card
-                  variant="path-item"
-                  className="w-full text-center h-full flex flex-col items-center justify-center py-8"
-                >
-                  <div className="mb-4 p-4 bg-[#0b3883]/5 rounded-2xl text-[#0b3883]">
-                    <benefit.icon size={32} strokeWidth={2.5} />
-                  </div>
-                  <span className="font-bold text-[#0b3883] leading-tight px-4">
-                    {benefit.text}
-                  </span>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
+                <div className="mb-4 p-4 bg-[#0b3883]/5 rounded-2xl text-[#d1a814]">
+                  <benefit.icon size={32} strokeWidth={2.5} />
+                </div>
+                <span className="font-bold text-[#0b3883] leading-tight text-center text-sm">
+                  {benefit.text}
+                </span>
+              </Card>
+            </motion.div>
+          ))}
         </motion.div>
 
         {/* Bottom CTA Feel */}

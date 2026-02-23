@@ -44,7 +44,10 @@ export default function SoluctionSeaction() {
   ];
 
   return (
-    <section className="relative w-full py-24 px-4 bg-[#f1f5f9]/30 overflow-hidden min-h-screen">
+    <section
+      id="program"
+      className="relative w-full py-24 px-4 bg-[#f1f5f9]/30 overflow-hidden min-h-screen"
+    >
       {/* Decorative Background */}
       <div className="absolute top-0 right-0 w-1/2 h-full bg-[#0b3883]/2 -skew-x-12 translate-x-20 pointer-events-none" />
 
@@ -66,9 +69,10 @@ export default function SoluctionSeaction() {
             viewport={{ once: true }}
             className="text-3xl md:text-5xl lg:text-6xl font-black text-[#0b3883] leading-tight max-w-4xl mx-auto"
           >
-            Pondok Entrepreneur adalah ekosistem pembentukan{" "}
+            "<span className="text-amber-400">Pondok Entrepreneur</span> adalah
+            ekosistem pembentukan{" "}
             <span className="text-transparent bg-clip-text bg-linear-to-r from-[#0b3883] to-[#0e489b]">
-              pengusaha muda.
+              pengusaha muda."
             </span>
           </motion.h2>
 

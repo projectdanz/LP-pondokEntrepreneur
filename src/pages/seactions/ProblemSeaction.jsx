@@ -37,7 +37,10 @@ export default function ProblemSeaction() {
   ];
 
   return (
-    <section className="relative w-full py-24 px-4 bg-[#f8fafc] overflow-hidden min-h-screen flex flex-col items-center">
+    <section
+      id="masalah"
+      className="relative w-full py-24 px-4 bg-[#f8fafc] overflow-hidden min-h-screen flex flex-col items-center"
+    >
       {/* Background Decorative Circles */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-200 h-200 border border-[#0b3883]/5 rounded-full pointer-events-none" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-150 border border-[#0b3883]/10 rounded-full pointer-events-none" />
