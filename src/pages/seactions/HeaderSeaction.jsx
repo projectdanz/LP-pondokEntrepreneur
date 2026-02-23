@@ -3,7 +3,7 @@ import Button from "../../components/Button";
 
 export default function HeaderSeaction() {
   return (
-    <section className="relative w-full min-h-screen flex flex-col bg-white overflow-hidden ">
+    <section className="relative w-full min-h-screen flex flex-col bg-white overflow-hidden pt-24 md:pt-0">
       {/* Background Decorative Elements (Subtle) */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
         <div className="absolute top-[-10%] right-[-5%] w-100 h-100 bg-[#0b3883]/5 rounded-full blur-3xl animate-pulse" />
@@ -53,16 +53,34 @@ export default function HeaderSeaction() {
 
         {/* Action Button */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <Button variant="secondary" size="lg" className="shadow-xl">
-            Daftar Sekarang
-          </Button>
-        </motion.div>
+  initial={{ opacity: 0, scale: 0.9 }}
+  animate={{
+    opacity: 1,
+    scale: 1,
+    y: [0, -8, 0, 8, 0],
+    rotate: [0, -2, 0, 2, 0],
+  }}
+  transition={{
+    opacity: { duration: 0.5, delay: 0.6 },
+    scale: { duration: 0.5, delay: 0.6 },
+    y: {
+      duration: 4,
+      repeat: Infinity,
+      ease: "easeInOut",
+    },
+    rotate: {
+      duration: 4,
+      repeat: Infinity,
+      ease: "easeInOut",
+    },
+  }}
+  whileHover={{ scale: 1.05 }}
+  whileTap={{ scale: 0.95 }}
+>
+  <Button variant="secondary" size="lg" className="shadow-xl">
+    Daftar Sekarang
+  </Button>
+</motion.div>
       </div>
 
       {/* Bottom Glow */}
