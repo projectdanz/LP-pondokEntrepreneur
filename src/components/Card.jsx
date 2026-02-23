@@ -7,6 +7,7 @@ export default function Card({
   title,
   alignButton = "right", // side-right, side-left, bottom-center, right, left
   boxOffset = "right", // right, left (for simple variant)
+  className = "",
   children,
 }) {
   const [open, setOpen] = useState(false);
@@ -55,6 +56,7 @@ export default function Card({
                     ${isSideLayout ? "card-side-layout" : ""}
                     ${isBottomCenter ? "card-bottom-center-layout" : ""}
                     ${variant === "content" ? "border-2 border-[#0e489b]/10" : ""}
+                    ${className}
                 `}
       >
         {/* Side Left Button */}
