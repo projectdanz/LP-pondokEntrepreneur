@@ -1,5 +1,5 @@
 import { Instagram, Youtube, Music2, MessageCircle } from "lucide-react";
-import IconPondok from "../../public/image_pe/icon_pe(04).svg";
+import IconPondok from "../../public/image_pe/icon_pe(02).svg";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -20,7 +20,7 @@ export default function Footer() {
     },
     {
       icon: Youtube,
-      href: "https://www.youtube.com/@PonpesEntrepreneur",
+      href: "https://www.youtube.com/@Pondokentrepreneur.official",
       label: "YouTube",
       hoverColor: "hover:bg-[#FF0000]",
     },
@@ -39,11 +39,11 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center gap-10 mb-12">
           {/* Left Side: Brand Info */}
           <div className="flex flex-col items-center md:items-start text-center md:text-left gap-4">
-            <div className="flex items-center gap-3">
+            <div className="flex items-center">
               <img
                 src={IconPondok}
                 alt="Pondok Entrepreneur"
-                className="w-12 h-12 object-contain brightness-0 invert"
+                className="w-24 h-24 object-contain"
               />
               <span className="text-xl font-black text-white tracking-tighter uppercase">
                 Pondok <span className="text-[#ffca11]">Entrepreneur</span>
