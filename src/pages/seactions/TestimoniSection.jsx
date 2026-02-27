@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export default function TestimoniSection() {
   const [current, setCurrent] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   const testimonials = [
     {
@@ -26,11 +28,21 @@ export default function TestimoniSection() {
   ];
 
   useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  useEffect(() => {
+    // Berhenti jika sedang di-hover atau di mode mobile
+    if (isPaused || isMobile) return;
+
     const timer = setInterval(() => {
       setCurrent((prev) => (prev + 1) % testimonials.length);
     }, 5000);
     return () => clearInterval(timer);
-  }, []);
+  }, [isPaused, isMobile, testimonials.length]);
 
   return (
     <section
@@ -61,7 +73,11 @@ export default function TestimoniSection() {
         </div>
 
         {/* Testimonial Card */}
-        <div className="relative min-h-80 md:min-h-64">
+        <div
+          className="relative min-h-80 md:min-h-64"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
           <AnimatePresence mode="wait">
             <motion.div
               key={current}
