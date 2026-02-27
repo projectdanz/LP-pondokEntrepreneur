@@ -60,7 +60,7 @@ export default function ProblemSeaction() {
           transition={{ delay: 0.1 }}
           className="text-3xl md:text-5xl font-black text-[#0b3883] leading-tight"
         >
-          Kenapa Banyak Bisnis
+          Kenapa Banyak Pembisnis Muda
           <br />
           <span className="text-[#ffca11] drop-shadow-sm">
             Gagal Sebelum Mulai?
