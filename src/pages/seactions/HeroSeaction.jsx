@@ -89,7 +89,7 @@ export default function HeroSeaction() {
             viewport={{ once: true }}
             className="text-3xl md:text-5xl font-extrabold text-[#0b3883] leading-tight px-4"
           >
-            Bayangkan dalam <span className="text-amber-400">3–6</span> bulan ke
+            Bayangkan dalam <span className="text-amber-400">3 tahun</span>  ke
             depan:
           </motion.h2>
           <div className="w-24 h-1.5 bg-[#ffca11] mx-auto mt-6 rounded-full" />
